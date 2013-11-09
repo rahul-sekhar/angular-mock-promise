@@ -29,16 +29,17 @@ angular.module('angular-mock-promise', [])
   ])
 
   .factory('createMockPromise', ['$rootScope', '$q', ($rootScope, $q) ->
-    deferred = $q.defer()
-    promise = deferred.promise
+    return ->
+      deferred = $q.defer()
+      promise = deferred.promise
 
-    promise.resolve = ->
-      deferred.resolve.apply(undefined, arguments)
-      $rootScope.$apply()
+      promise.resolve = ->
+        deferred.resolve.apply(undefined, arguments)
+        $rootScope.$apply()
 
-    promise.reject = ->
-      deferred.reject.apply(undefined, arguments)
-      $rootScope.$apply()
+      promise.reject = ->
+        deferred.reject.apply(undefined, arguments)
+        $rootScope.$apply()
 
-    return promise
+      return promise
   ])

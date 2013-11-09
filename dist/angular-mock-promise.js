@@ -1,4 +1,5 @@
-/* angular-mock-promise 0.1.0 %> */
+/* angular-mock-promise 0.1.1
+ %> */
 
 (function() {
   angular.module('angular-mock-promise', []).factory('promiseExpectation', [
@@ -39,18 +40,20 @@
     }
   ]).factory('createMockPromise', [
     '$rootScope', '$q', function($rootScope, $q) {
-      var deferred, promise;
-      deferred = $q.defer();
-      promise = deferred.promise;
-      promise.resolve = function() {
-        deferred.resolve.apply(void 0, arguments);
-        return $rootScope.$apply();
+      return function() {
+        var deferred, promise;
+        deferred = $q.defer();
+        promise = deferred.promise;
+        promise.resolve = function() {
+          deferred.resolve.apply(void 0, arguments);
+          return $rootScope.$apply();
+        };
+        promise.reject = function() {
+          deferred.reject.apply(void 0, arguments);
+          return $rootScope.$apply();
+        };
+        return promise;
       };
-      promise.reject = function() {
-        deferred.reject.apply(void 0, arguments);
-        return $rootScope.$apply();
-      };
-      return promise;
     }
   ]);
 
