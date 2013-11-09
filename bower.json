@@ -1,0 +1,27 @@
+{
+	"name": "angular-mock-promise",
+	"version": "0.1.0",
+	"homepage": "https://github.com/rahul-sekhar/angular-mock-promise",
+	"authors": [
+		"Rahul Sekhar <sekhar.rahul@gmail.com>"
+	],
+	"description": "Module to easily mock and test angularJS promises",
+	"main": "dist/angular-mock-promise.js",
+	"keywords": [
+		"angularjs",
+		"promise",
+		"mock"
+	],
+	"license": "MIT",
+	"ignore": [
+		"**/.*",
+		"node_modules",
+		"bower_components",
+		"src",
+		"Gruntfile.coffee",
+		"package.json"
+	],
+	"dependencies": {
+		"angular": "1.2.0-rc.3"
+	}
+}
