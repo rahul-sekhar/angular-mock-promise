@@ -1,5 +1,4 @@
-/* angular-mock-promise 0.1.1
- %> */
+/* angular-mock-promise 0.1.1 */
 
 (function() {
   angular.module('angular-mock-promise', []).factory('promiseExpectation', [
