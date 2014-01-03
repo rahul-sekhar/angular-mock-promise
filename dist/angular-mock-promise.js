@@ -1,4 +1,4 @@
-/* angular-mock-promise 0.1.2 */
+/* angular-mock-promise 0.2.0 */
 
 (function() {
   angular.module('angular-mock-promise', []).factory('promiseExpectation', [
@@ -19,6 +19,11 @@
           });
           promise.then(this.resolveFn, this.rejectFn);
         }
+
+        promiseExpectation.prototype.expectToBeUnresolved = function() {
+          expect(this.resolveFn).not.toHaveBeenCalled();
+          return expect(this.rejectFn).not.toHaveBeenCalled();
+        };
 
         promiseExpectation.prototype.expectToBeResolved = function() {
           expect(this.resolveFn).toHaveBeenCalled();

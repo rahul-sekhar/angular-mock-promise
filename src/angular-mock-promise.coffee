@@ -15,6 +15,10 @@ angular.module('angular-mock-promise', [])
 
         promise.then @resolveFn, @rejectFn
 
+      expectToBeUnresolved: ->
+        expect(@resolveFn).not.toHaveBeenCalled()
+        expect(@rejectFn).not.toHaveBeenCalled()
+
       expectToBeResolved: ->
         expect(@resolveFn).toHaveBeenCalled()
         expect(@rejectFn).not.toHaveBeenCalled()
