@@ -6,17 +6,20 @@
       var promiseExpectation;
       promiseExpectation = (function() {
         function promiseExpectation(promise) {
-          var _this = this;
-          this.resolveFn = jasmine.createSpy('promise resolved').andCallFake(function() {
-            _this.resolveFnCalled = true;
-            _this.args = arguments;
-            return _this.arg = arguments[0];
-          });
-          this.rejectFn = jasmine.createSpy('promise rejected').andCallFake(function() {
-            _this.rejectFnCalled = true;
-            _this.args = arguments;
-            return _this.arg = arguments[0];
-          });
+          this.resolveFn = jasmine.createSpy('promise resolved').and.callFake((function(_this) {
+            return function() {
+              _this.resolveFnCalled = true;
+              _this.args = arguments;
+              return _this.arg = arguments[0];
+            };
+          })(this));
+          this.rejectFn = jasmine.createSpy('promise rejected').and.callFake((function(_this) {
+            return function() {
+              _this.rejectFnCalled = true;
+              _this.args = arguments;
+              return _this.arg = arguments[0];
+            };
+          })(this));
           promise.then(this.resolveFn, this.rejectFn);
         }
 

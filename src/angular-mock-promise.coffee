@@ -3,12 +3,12 @@ angular.module('angular-mock-promise', [])
   .factory('promiseExpectation', ['$rootScope', ($rootScope) ->
     class promiseExpectation
       constructor: (promise) ->
-        @resolveFn = jasmine.createSpy('promise resolved').andCallFake =>
+        @resolveFn = jasmine.createSpy('promise resolved').and.callFake =>
           @resolveFnCalled = true
           @args = arguments
           @arg = arguments[0]
 
-        @rejectFn = jasmine.createSpy('promise rejected').andCallFake =>
+        @rejectFn = jasmine.createSpy('promise rejected').and.callFake =>
           @rejectFnCalled = true
           @args = arguments
           @arg = arguments[0]
